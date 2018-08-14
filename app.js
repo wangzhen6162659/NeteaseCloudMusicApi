@@ -3,7 +3,7 @@ const apicache = require("apicache");
 const path = require("path");
 const fs = require("fs");
 const app = express();
-let cache = apicache.middleware;
+const cache = apicache.middleware;
 
 // 跨域设置
 app.all("*", function(req, res, next) {
@@ -56,7 +56,8 @@ fs.readdirSync("./router/").reverse().forEach(file => {
     route = UnusualRouteFileMap[file];
   } else {
     route =
-      "/" +
+      // "/api/music/" +
+        '/' +
       file
         .replace(/\.js$/i, "")
         .replace(/_/g, "/")
@@ -64,7 +65,7 @@ fs.readdirSync("./router/").reverse().forEach(file => {
           return "/" + a.toLowerCase();
         });
   }
-
+  console.log(route)
   app.use(route, Wrap(require("./router/" + file)));
 });
 
