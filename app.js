@@ -56,7 +56,7 @@ fs.readdirSync("./router/").reverse().forEach(file => {
     route = UnusualRouteFileMap[file];
   } else {
     route =
-      // "/api/music/" +
+        "/api" +
         '/' +
       file
         .replace(/\.js$/i, "")
