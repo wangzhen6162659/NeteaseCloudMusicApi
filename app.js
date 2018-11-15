@@ -65,7 +65,7 @@ fs.readdirSync(path.join(__dirname, 'module')).reverse().forEach(file => {
     let route = (file in special) ? special[file] : '/' + file.replace(/\.js$/i, '').replace(/_/g, '/')
     let question = require(path.join(__dirname, 'module', file))
     
-    app.use('/api' + route, (req, res) => {
+    app.use('/musicApi' + route, (req, res) => {
         let query = Object.assign({}, req.query, req.body, {cookie: req.cookies})
         question(query, request)
         .then(answer => {
